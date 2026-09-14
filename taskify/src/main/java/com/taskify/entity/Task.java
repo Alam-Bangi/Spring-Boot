@@ -1,10 +1,13 @@
 package com.taskify.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder(toBuilder = true, access = AccessLevel.PUBLIC)
 public class Task {
 
     @Id
@@ -14,21 +17,8 @@ public class Task {
     private String name;
     private boolean completed;
 
-    public Task(long id, String name, boolean completed) {
-        this.id = id;
-        this.name = name;
-        this.completed = completed;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
