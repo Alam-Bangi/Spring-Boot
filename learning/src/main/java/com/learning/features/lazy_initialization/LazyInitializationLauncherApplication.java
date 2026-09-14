@@ -1,4 +1,4 @@
-package com.learning.examples.lazy_initialization;
+package com.learning.features.lazy_initialization;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;

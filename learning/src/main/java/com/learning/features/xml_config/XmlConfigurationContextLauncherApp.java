@@ -1,4 +1,4 @@
-package com.learning.examples.xml_config;
+package com.learning.features.xml_config;
 
 import java.util.Arrays;
 
@@ -6,9 +6,7 @@ import com.learning.game.GameRunner;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class XmlConfigurationContextLauncherApp {
-	
 	public static void main(String[] args) {
-
 		try (var context = 
 				new ClassPathXmlApplicationContext("contextConfiguration.xml")) {
 			
@@ -16,7 +14,6 @@ public class XmlConfigurationContextLauncherApp {
 				.forEach(System.out::println);
 			
 			System.out.println(context.getBean("name"));
-			
 			System.out.println(context.getBean("age"));
 
 			context.getBean(GameRunner.class).run();

@@ -1,4 +1,4 @@
-package com.learning.examples.business_calculator;
+package com.learning.features.business_calculator;
 
 import org.springframework.stereotype.Repository;
 

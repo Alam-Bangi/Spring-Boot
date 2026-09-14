@@ -1,4 +1,4 @@
-package com.learning.examples.scope;
+package com.learning.features.scope;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

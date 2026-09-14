@@ -1,4 +1,4 @@
-package com.learning.examples.spring_context;
+package com.learning.features.spring_context;
 
 import java.util.Arrays;
 

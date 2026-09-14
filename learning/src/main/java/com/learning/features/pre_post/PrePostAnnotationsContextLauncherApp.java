@@ -1,4 +1,4 @@
-package com.learning.examples.pre_post;
+package com.learning.features.pre_post;
 
 import java.util.Arrays;
 

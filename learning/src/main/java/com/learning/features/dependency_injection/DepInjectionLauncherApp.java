@@ -1,4 +1,4 @@
-package com.learning.examples.dependency_injection;
+package com.learning.features.dependency_injection;
 
 import java.util.Arrays;
 

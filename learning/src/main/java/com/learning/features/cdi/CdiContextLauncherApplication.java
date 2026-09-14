@@ -1,4 +1,4 @@
-package com.learning.examples.cdi;
+package com.learning.features.cdi;
 
 import java.util.Arrays;
 
