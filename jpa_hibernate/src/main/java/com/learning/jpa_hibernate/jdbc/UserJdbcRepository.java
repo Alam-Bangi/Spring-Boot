@@ -1,43 +1,44 @@
 package com.learning.jpa_hibernate.jdbc;
 
-import com.learning.jpa_hibernate.entity.Course;
+import com.learning.jpa_hibernate.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CourseJdbcRepository {
+public class UserJdbcRepository {
 
     @Autowired
     private JdbcTemplate springJdbcTemplate;
 
     private static String INSERT_QUERY =
             """
-                insert into course (id , name, author)
+                insert into users (id , name, email)
                 values(?, ?, ?);
             """;
     private static String DELETE_QUERY =
             """
-                delete from course
+                delete from users
                 where id = ?;
             """;
     private static String SELECT_QUERY =
             """
-                select * from course
+                select * from users
                 where id = ?;
             """;
 
-    public void insert(Course course) {
+    public void insert(User user) {
         springJdbcTemplate.update(INSERT_QUERY,
-                course.getId(), course.getName(), course.getAuthor());
+                user.getId(), user.getName());
     }
     public void deleteById(long id) {
         springJdbcTemplate.update(DELETE_QUERY, id);
     }
 
-    public Course findById(long id) {
+    public User findById(long id) {
         return springJdbcTemplate.queryForObject
-                (SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
+                (SELECT_QUERY, new BeanPropertyRowMapper<>(User.class), id);
     }
+
 }

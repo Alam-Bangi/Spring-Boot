@@ -1,43 +1,43 @@
 package com.learning.jpa_hibernate.jdbc;
 
-import com.learning.jpa_hibernate.entity.Course;
+import com.learning.jpa_hibernate.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CourseJdbcRepository {
+public class TaskJdbcRepository {
 
     @Autowired
     private JdbcTemplate springJdbcTemplate;
 
     private static String INSERT_QUERY =
             """
-                insert into course (id , name, author)
-                values(?, ?, ?);
+                insert into task (id , name, description, isCompleted)
+                values(?, ?, ?, ?);
             """;
     private static String DELETE_QUERY =
             """
-                delete from course
+                delete from task
                 where id = ?;
             """;
     private static String SELECT_QUERY =
             """
-                select * from course
+                select * from task
                 where id = ?;
             """;
 
-    public void insert(Course course) {
+    public void insert(Task task) {
         springJdbcTemplate.update(INSERT_QUERY,
-                course.getId(), course.getName(), course.getAuthor());
+                task.getId(), task.getName(), task.getDescription(), task.isCompleted());
     }
     public void deleteById(long id) {
         springJdbcTemplate.update(DELETE_QUERY, id);
     }
 
-    public Course findById(long id) {
+    public Task findById(long id) {
         return springJdbcTemplate.queryForObject
-                (SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
+                (SELECT_QUERY, new BeanPropertyRowMapper<>(Task.class), id);
     }
 }
