@@ -26,4 +26,9 @@ public class UserController {
     public List<User> getUsers() {
         return userService.getUser();
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(Long id) {
+        userService.deleteUser(id);
+    }
 }

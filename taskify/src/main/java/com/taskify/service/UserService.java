@@ -30,4 +30,10 @@ public class UserService {
     public List<User> getUser() {
         return userRepository.findAll();
     }
+
+    public void deleteUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        userRepository.delete(user);
+    }
 }

@@ -6,21 +6,33 @@ import com.taskify.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 public class TaskController {
 
     private TaskService taskService;
 
-    @PostMapping("/{id}/task")
-    public Task createTask(@PathVariable Long id, @RequestBody TaskRequest taskRequest) {
-        System.out.println(id + ", " +taskRequest);
-        Task task = taskService.addTask(id, taskRequest);
+    @PostMapping("/{user_id}/task")
+    public Task createTask(@PathVariable Long user_id, @RequestBody TaskRequest taskRequest) {
+        System.out.println(user_id + ", " +taskRequest);
+        Task task = taskService.addTask(user_id, taskRequest);
         return task;
     }
 
-    @GetMapping("/task")
-    public String getTask() {
-        return "index";
+    @PutMapping("/{user_id}/task/{id}")
+    public Task updateTask(@PathVariable Long id, @RequestBody TaskRequest taskRequest) {
+        return taskService.updateTask(id, taskRequest);
+    }
+
+    @GetMapping("/{id}/task")
+    public List<Task> getTaskForUser(@PathVariable Long id) {
+        return taskService.getTaskForUser(id);
+    }
+
+    @DeleteMapping("/{user_id}/task/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
     }
 }

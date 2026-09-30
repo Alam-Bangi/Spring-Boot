@@ -9,5 +9,5 @@ import lombok.Setter;
 @Getter
 public class TaskRequest {
     public String name;
-    public boolean isCompleted;
+    public boolean completed;
 }
