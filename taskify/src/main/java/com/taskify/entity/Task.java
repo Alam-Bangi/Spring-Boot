@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @Builder(toBuilder = true, access = AccessLevel.PUBLIC)
-public class Task {
+public class Task  {
 
     @Id
     @GeneratedValue

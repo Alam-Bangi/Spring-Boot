@@ -17,8 +17,7 @@ public class TaskController {
     @PostMapping("/{user_id}/task")
     public Task createTask(@PathVariable Long user_id, @RequestBody TaskRequest taskRequest) {
         System.out.println(user_id + ", " +taskRequest);
-        Task task = taskService.addTask(user_id, taskRequest);
-        return task;
+        return taskService.addTask(user_id, taskRequest);
     }
 
     @PutMapping("/{user_id}/task/{id}")

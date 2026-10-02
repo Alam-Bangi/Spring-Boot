@@ -1,6 +1,7 @@
 package com.taskify.service;
 
 import com.taskify.dto.UserRequest;
+import com.taskify.dto.UserUpdateRequest;
 import com.taskify.entity.User;
 import com.taskify.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,13 @@ public class UserService {
 
     public List<User> getUser() {
         return userRepository.findAll();
+    }
+
+    public User updateUser(Long id, UserUpdateRequest userUpdateRequest) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setName(userUpdateRequest.getName());
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {

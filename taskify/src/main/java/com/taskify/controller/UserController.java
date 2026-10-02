@@ -1,6 +1,7 @@
 package com.taskify.controller;
 
 import com.taskify.dto.UserRequest;
+import com.taskify.dto.UserUpdateRequest;
 import com.taskify.entity.User;
 import com.taskify.service.UserService;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,12 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(Long id) {
+    public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
+    }
+
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody UserUpdateRequest userUpdateRequest) {
+        return userService.updateUser(id, userUpdateRequest);
     }
 }

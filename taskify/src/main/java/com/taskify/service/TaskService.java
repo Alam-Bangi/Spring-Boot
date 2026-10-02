@@ -20,6 +20,9 @@ public class TaskService {
 
     public Task addTask(Long userId, TaskRequest taskRequest) {
         Optional<User> user = userRepository.findById(userId);
+        if(user.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
         Task byName = taskRepository.findByName(taskRequest.name);
         if(Objects.isNull(byName)) {
             Task task = Task.builder()
